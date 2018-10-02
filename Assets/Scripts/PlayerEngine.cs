@@ -12,13 +12,14 @@ public class PlayerEngine : MonoBehaviour {
     
     private bool isOnAir;
     private bool canMoveLaterally;
+    private int compteurSaut;
 
     private void Start()
     {
         maximumSpeed = variables.playerVariables.maximumSpeed;
         isOnAir = true;
         canMoveLaterally = true;
-       
+        compteurSaut = variables.playerVariables.maximumSaut;
     }
 
     private void updatePosition (Vector2 deplacement)
@@ -60,11 +61,16 @@ public class PlayerEngine : MonoBehaviour {
         gravityController.reverse();
         setIsOnAir(true);
         gravityController.On();
+        compteurSaut--;
     }
 
     public void setIsOnAir(bool b)
     {
         isOnAir = b;
+        if (!b)
+        {
+            resetSaut();
+        }
     }
 
     public bool getIsOnAir()
@@ -76,4 +82,16 @@ public class PlayerEngine : MonoBehaviour {
     {
         canMoveLaterally = b;
     }
+
+    public void resetSaut()
+    {
+        compteurSaut = variables.playerVariables.maximumSaut;
+    }
+
+    public bool canJump()
+    {
+        if (isOnAir & compteurSaut == variables.playerVariables.maximumSaut) return false;
+        return compteurSaut > 0;
+    }
+
 }

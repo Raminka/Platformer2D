@@ -20,6 +20,7 @@ public class GravityVariables
 public class PlayerVariables
 {
     public float maximumSpeed;
+    public int maximumSaut;
 }
 
 public class Variables : MonoBehaviour {

@@ -9,17 +9,18 @@ public class InputController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
+        //saut
+        if (Input.GetButtonDown("Jump") & player.canJump())
+        {
+
+            player.jump();
+        }
 
         //deplacement horizontal 
         float moveHorizontal = Input.GetAxis("Horizontal");
         Vector2 direction = new Vector2(moveHorizontal, 0);
         player.move(direction);
 
-        //saut
-        if (Input.GetButtonDown("Jump") & !player.getIsOnAir())
-        {
-           
-            player.jump();
-        }
+        
     }
 }

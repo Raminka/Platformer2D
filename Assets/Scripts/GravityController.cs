@@ -15,7 +15,7 @@ public class GravityController : MonoBehaviour {
     {
         G=variables.gravityVariables.G;
         impulsion = variables.gravityVariables.impulsion;
-        vitesseInversion = 30* impulsion ; //NE PAS TOUCHER!!!
+        vitesseInversion =30 * impulsion ; //NE PAS TOUCHER!!!
 
         deplacementY = -G * Time.deltaTime;
         isOn = true;
