@@ -21,7 +21,7 @@ public class ColliderController : MonoBehaviour
         else if (other.CompareTag("Crossable") || other.CompareTag("NonCrossable"))
         {
             float temp = gravity.deplacement().y;
-            if ( other.transform.position.y <= transform.position.y - 0.25) //crossable ou non crossable par au-dessus
+            if ( other.transform.position.y <= transform.position.y - 0.2) //crossable ou non crossable par au-dessus
             {
 
                 player.setIsOnAir(false);

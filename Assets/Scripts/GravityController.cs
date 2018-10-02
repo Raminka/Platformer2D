@@ -15,7 +15,7 @@ public class GravityController : MonoBehaviour {
     {
         G=variables.gravityVariables.G;
         impulsion = variables.gravityVariables.impulsion;
-        vitesseInversion =30 * impulsion ; //NE PAS TOUCHER!!!
+        vitesseInversion = 3 ;  //NE PAS TOUCHER!!!
 
         deplacementY = -G * Time.deltaTime;
         isOn = true;
@@ -30,7 +30,7 @@ public class GravityController : MonoBehaviour {
     public void reverse()
     {
         //pour simuler un sorte d'impulsion, on exerce la force dans le sens oposé de pesanteur
-        deplacementY =  G * Time.deltaTime;
+        deplacementY =  impulsion * Time.deltaTime;
     }
 
     public void Off()
@@ -46,14 +46,10 @@ public class GravityController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-       /* if (deplacementY < -G * Time.deltaTime)
-        {
-            deplacementY = -G * Time.deltaTime;
-        }*/
         //recuperation de gravité de base 
         if (deplacementY > - G * Time.deltaTime & isOn )
         {
-            deplacementY -= G * Time.deltaTime / vitesseInversion;
+            deplacementY -=  Time.deltaTime / vitesseInversion;
         }
     }
 

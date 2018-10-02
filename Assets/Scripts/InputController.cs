@@ -12,7 +12,7 @@ public class InputController : MonoBehaviour {
         //saut
         if (Input.GetButtonDown("Jump") & player.canJump())
         {
-
+            Debug.Log("jump asked");
             player.jump();
         }
 
