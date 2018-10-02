@@ -12,13 +12,11 @@ public class InputController : MonoBehaviour {
         //saut
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("button pressed");
             if (player.canJump())
             {
-                Debug.Log("saut accepté");
+                
                 player.jump();
             }
-            player.jump();
         }
 
         //deplacement horizontal 

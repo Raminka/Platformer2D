@@ -14,12 +14,15 @@ public class PlayerEngine : MonoBehaviour {
     private bool canMoveLaterally;
     private int compteurSaut;
 
+    private typeOfWall lastWallTouched;
+
     private void Start()
     {
         maximumSpeed = variables.playerVariables.maximumSpeed;
         isOnAir = true;
         canMoveLaterally = true;
         compteurSaut = variables.playerVariables.maximumSaut;
+        lastWallTouched = typeOfWall.NONE;
     }
 
     private void updatePosition (Vector2 deplacement)
@@ -94,4 +97,19 @@ public class PlayerEngine : MonoBehaviour {
         return compteurSaut > 0;
     }
 
+    public void wallJump()
+    {
+        compteurSaut = 1;
+    }
+
+
+    public void setLastWall(typeOfWall wall)
+    {
+        lastWallTouched = wall;
+    }
+
+    public typeOfWall getLastWall()
+    {
+        return lastWallTouched;
+    }
 }

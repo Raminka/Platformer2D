@@ -2,15 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum typeOfWall {NONE, EAST, WEST }
+
 public class ColliderController : MonoBehaviour
 {
 
     public Collider2D playerCollider;
     public PlayerEngine player;
     public GravityController gravity;
+    private typeOfWall actualWall;
+
+    private void Start()
+    {
+        actualWall = typeOfWall.NONE;
+    }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("East"))
+        {
+            Debug.Log("E");
+            actualWall = typeOfWall.EAST;
+        }
+        else if (other.CompareTag("West"))
+        {
+            Debug.Log("W");
+            actualWall = typeOfWall.WEST;
+        }
+        else {
+            actualWall = typeOfWall.NONE;
+            player.setLastWall(typeOfWall.NONE); 
+                }
+
+        if (actualWall != typeOfWall.NONE  & actualWall != player.getLastWall())
+        {
+            player.wallJump();
+            player.setLastWall(actualWall);
+        }
+
+
 
         if (other.CompareTag("Floor"))
         {

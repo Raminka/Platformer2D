@@ -7,6 +7,8 @@ TagManager:
   - Floor
   - Crossable
   - NonCrossable
+  - West
+  - East
   layers:
   - Default
   - TransparentFX
