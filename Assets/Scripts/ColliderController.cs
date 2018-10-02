@@ -21,24 +21,25 @@ public class ColliderController : MonoBehaviour
         else if (other.CompareTag("Crossable") || other.CompareTag("NonCrossable"))
         {
             float temp = gravity.deplacement().y;
-            if ( other.transform.position.y <= transform.position.y - 0.25)
+            if ( other.transform.position.y <= transform.position.y - 0.25) //crossable ou non crossable par au-dessus
             {
 
                 player.setIsOnAir(false);
                 gravity.Off();
 
             }
-            else if (other.CompareTag("NonCrossable"))
+            else if (other.CompareTag("NonCrossable") & gravity.deplacement().y >= 0) //non crossable par en-dessous (de côté ou non)
             {
-                if (gravity.deplacement().y >= 0)
-                {
                     player.setCanMoveLaterally(false);
                     player.setIsOnAir(true);
                     gravity.Off();
                     gravity.On();
-                }
             }
-            if (gravity.deplacement().y == temp )
+            else if (other.CompareTag("Crossable") & gravity.deplacement().y>=0) //crossable par en-dessous
+            {
+                player.setCanMoveLaterally(true);
+            }
+            else if (gravity.deplacement().y == temp ) //non crossable par le côté
             {
                 player.setCanMoveLaterally(false);
             }
