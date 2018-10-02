@@ -11,38 +11,37 @@ public class ColliderController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        float temp = gravity.deplacement().y;
-        if (other.CompareTag("Crossable") & other.transform.position.y <= transform.position.y - 0.25)
-        {
 
-            player.setIsOnAir(false);
-                gravity.Off();
-            
-        }
-        else if (other.CompareTag("Floor"))
+        if (other.CompareTag("Floor"))
         {
 
             player.setIsOnAir(false);
 
         }
-        else if (other.CompareTag("NonCrossable"))
+        else if (other.CompareTag("Crossable") || other.CompareTag("NonCrossable"))
         {
-            if (gravity.deplacement().y >= 0)
-            {
-                player.setIsOnAir(true);
-                //gravity.Off();
-                //gravity.On();
-            }
-            else if (other.transform.position.y <= transform.position.y - 0.25)
+            float temp = gravity.deplacement().y;
+            if ( other.transform.position.y <= transform.position.y - 0.25)
             {
 
                 player.setIsOnAir(false);
                 gravity.Off();
+
             }
-        }
-        if (gravity.deplacement().y == temp & !other.CompareTag("Floor"))
-        {
-            player.setCanMoveLaterally(false);
+            else if (other.CompareTag("NonCrossable"))
+            {
+                if (gravity.deplacement().y >= 0)
+                {
+                    player.setCanMoveLaterally(false);
+                    player.setIsOnAir(true);
+                    gravity.Off();
+                    gravity.On();
+                }
+            }
+            if (gravity.deplacement().y == temp )
+            {
+                player.setCanMoveLaterally(false);
+            }
         }
     }
 
