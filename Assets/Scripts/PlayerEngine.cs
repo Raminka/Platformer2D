@@ -6,7 +6,7 @@ public class PlayerEngine : MonoBehaviour {
     
 
     private Vector3 position;
-    public float maximumSpeed; //vitesse maximale horizontale
+    private float maximumSpeed; //vitesse maximale horizontale
     public Variables variables; 
     public GravityController gravityController;
     
@@ -14,7 +14,9 @@ public class PlayerEngine : MonoBehaviour {
 
     private void Start()
     {
+        maximumSpeed = variables.playerVariables.maximumSpeed;
         isOnAir = true;
+       
     }
 
     private void updatePosition (Vector2 deplacement)

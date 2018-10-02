@@ -355,7 +355,18 @@ Prefab:
       propertyPath: timeGOff
       value: 30
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114484243065575784, guid: 839319a5b867b1b42acb7efd1416580f,
+        type: 2}
+      propertyPath: variables
+      value: 
+      objectReference: {fileID: 2084584562}
+    - target: {fileID: 114985573851647738, guid: 839319a5b867b1b42acb7efd1416580f,
+        type: 2}
+      propertyPath: variables
+      value: 
+      objectReference: {fileID: 2084584562}
+    m_RemovedComponents:
+    - {fileID: 114061977289136250, guid: 839319a5b867b1b42acb7efd1416580f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 839319a5b867b1b42acb7efd1416580f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &483821576
@@ -446,6 +457,11 @@ Prefab:
       propertyPath: m_Name
       value: PlatformCrossable
       objectReference: {fileID: 0}
+    - target: {fileID: 23069766253942568, guid: 5fe5d3ce33d42a843ae1061b2ba46ee7,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85f769a426e96884681a2401e529bc6b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fe5d3ce33d42a843ae1061b2ba46ee7, type: 2}
   m_IsPrefabParent: 0
@@ -543,8 +559,8 @@ Camera:
   m_GameObject: {fileID: 1219110986}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.1630623, g: 0.7398102, b: 0.7647059, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -631,6 +647,11 @@ Prefab:
       propertyPath: m_TagString
       value: NonCrossable
       objectReference: {fileID: 0}
+    - target: {fileID: 23069766253942568, guid: 5fe5d3ce33d42a843ae1061b2ba46ee7,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7df9852af259eda439e55275abe67450, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fe5d3ce33d42a843ae1061b2ba46ee7, type: 2}
   m_IsPrefabParent: 0
@@ -785,3 +806,53 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 440257077}
   m_Script: {fileID: 11500000, guid: c6e9d7f3ed3f249478cc59b3ae7ab147, type: 3}
+--- !u!1 &2084584561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2084584563}
+  - component: {fileID: 2084584562}
+  m_Layer: 0
+  m_Name: ScriptVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2084584562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2084584561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8fbbbeb66441446b81e496de7e2747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityVariables:
+    G: 5
+    impulsion: 1
+  boundary:
+    xMin: -4.7
+    xMax: 4.7
+    yMin: -4.7
+    yMax: 4.7
+  playerVariables:
+    maximumSpeed: 5
+--- !u!4 &2084584563
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2084584561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9946978, y: -4.772246, z: -0.03745505}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

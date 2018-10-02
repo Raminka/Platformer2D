@@ -26,7 +26,6 @@ public class ColliderController : MonoBehaviour
         }
         else if (other.CompareTag("NonCrossable"))
         {
-            Debug.Log("coucou");
             //if (other.transform.position.y >= transform.position.y + 0.35)
             if (gravity.deplacement().y >= 0)
             {
