@@ -11,17 +11,26 @@ public class PlayerEngine : MonoBehaviour {
     public GravityController gravityController;
     
     private bool isOnAir;
+    private bool canMoveLaterally;
 
     private void Start()
     {
         maximumSpeed = variables.playerVariables.maximumSpeed;
         isOnAir = true;
+        canMoveLaterally = true;
        
     }
 
     private void updatePosition (Vector2 deplacement)
     {
-        position = gameObject.transform.position + new Vector3(deplacement.x, deplacement.y, 0);
+        if (canMoveLaterally)
+        {
+            position = gameObject.transform.position + new Vector3(deplacement.x, deplacement.y, 0);
+        }
+        else
+        {
+            position = gameObject.transform.position + new Vector3(0, deplacement.y, 0);
+        }
         gameObject.transform.position = position;
 
         //verification que l'objet n'a pas quitté la limite du jeu
@@ -63,4 +72,8 @@ public class PlayerEngine : MonoBehaviour {
         return isOnAir;
     }
 
+    public void setCanMoveLaterally(bool b)
+    {
+        canMoveLaterally = b;
+    }
 }
