@@ -7,12 +7,17 @@ public class InputController : MonoBehaviour {
     public PlayerEngine player; 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //saut
-        if (Input.GetButtonDown("Jump") & player.canJump())
+        if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("jump asked");
+            Debug.Log("button pressed");
+            if (player.canJump())
+            {
+                Debug.Log("saut accepté");
+                player.jump();
+            }
             player.jump();
         }
 

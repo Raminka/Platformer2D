@@ -1081,7 +1081,7 @@ MonoBehaviour:
     yMax: 4.7
   playerVariables:
     maximumSpeed: 5
-    maximumSaut: 2
+    maximumSaut: 10
 --- !u!4 &2084584563
 Transform:
   m_ObjectHideFlags: 0
