@@ -16,7 +16,7 @@ public class InputController : MonoBehaviour {
         player.move(direction);
 
         //saut
-        if (Input.GetButtonDown("Jump") & !player.isOnAir)
+        if (Input.GetButtonDown("Jump") & !player.getIsOnAir())
         {
            
             player.jump();

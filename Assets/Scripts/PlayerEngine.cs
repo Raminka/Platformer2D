@@ -10,7 +10,7 @@ public class PlayerEngine : MonoBehaviour {
     public Variables variables; 
     public GravityController gravityController;
     
-    public bool isOnAir;
+    private bool isOnAir;
 
     private void Start()
     {
@@ -49,8 +49,18 @@ public class PlayerEngine : MonoBehaviour {
     public void jump()
     {
         gravityController.reverse();
-        isOnAir = true;
+        setIsOnAir(true);
         gravityController.On();
+    }
+
+    public void setIsOnAir(bool b)
+    {
+        isOnAir = b;
+    }
+
+    public bool getIsOnAir()
+    {
+        return isOnAir;
     }
 
 }

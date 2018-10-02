@@ -14,14 +14,15 @@ public class ColliderController : MonoBehaviour
         // if (other.CompareTag("Floor") & gravity.deplacement().y <= 0)
         if (other.CompareTag("Crossable") & other.transform.position.y <= transform.position.y - 0.25)
         {
-            
-                player.isOnAir = false;
+
+            player.setIsOnAir(false);
                 gravity.Off();
             
         }
         else if (other.CompareTag("Floor"))
         {
-            player.isOnAir = false;
+
+            player.setIsOnAir(false);
 
         }
         else if (other.CompareTag("NonCrossable"))
@@ -29,13 +30,15 @@ public class ColliderController : MonoBehaviour
             //if (other.transform.position.y >= transform.position.y + 0.35)
             if (gravity.deplacement().y >= 0)
             {
-                player.isOnAir = true;
+
+                player.setIsOnAir(true);
                 gravity.Off();
                 gravity.On();
             }
             else if (other.transform.position.y <= transform.position.y - 0.25)
             {
-                player.isOnAir = false;
+
+                player.setIsOnAir(false);
                 gravity.Off();
             }
         }
@@ -45,7 +48,8 @@ public class ColliderController : MonoBehaviour
     {
         if (other.CompareTag("Crossable") || other.CompareTag("NonCrossable"))
         {
-            gravity.On();   
+            gravity.On();
+            player.setIsOnAir(true);
         }
     }
 }
