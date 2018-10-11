@@ -536,6 +536,16 @@ Prefab:
       propertyPath: m_TagString
       value: West
       objectReference: {fileID: 0}
+    - target: {fileID: 61109556462842280, guid: 4d764cde7134dcf4fbd26ff7e49b3d90,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 61109556462842280, guid: 4d764cde7134dcf4fbd26ff7e49b3d90,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d764cde7134dcf4fbd26ff7e49b3d90, type: 2}
   m_IsPrefabParent: 0
@@ -1167,6 +1177,16 @@ Prefab:
         type: 2}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61109556462842280, guid: 4d764cde7134dcf4fbd26ff7e49b3d90,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 61109556462842280, guid: 4d764cde7134dcf4fbd26ff7e49b3d90,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d764cde7134dcf4fbd26ff7e49b3d90, type: 2}

@@ -14,6 +14,9 @@ public class PlayerEngine : MonoBehaviour {
     private bool canMoveLaterally;
     private int compteurSaut;
 
+    public bool canGoWest;
+    public bool canGoEast;
+
     private typeOfWall lastWallTouched;
 
     private void Start()
@@ -23,6 +26,8 @@ public class PlayerEngine : MonoBehaviour {
         canMoveLaterally = true;
         compteurSaut = variables.playerVariables.maximumSaut;
         lastWallTouched = typeOfWall.NONE;
+        canGoWest = true;
+        canGoEast = true;
     }
 
     private void updatePosition (Vector2 deplacement)
@@ -49,6 +54,14 @@ public class PlayerEngine : MonoBehaviour {
     //deplacement influencé par le choix du joueur 
     public void move(Vector2 direction)
     {
+        if (!canGoWest & direction.x > 0)
+        {
+            direction.x = 0;
+        }
+        else if (!canGoEast & direction.x < 0)
+        {
+            direction.x = 0;
+        }
         updatePosition((direction) * maximumSpeed * Time.deltaTime);
     }
 

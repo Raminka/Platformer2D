@@ -24,11 +24,46 @@ public class ColliderController : MonoBehaviour
         {
             Debug.Log("E");
             actualWall = typeOfWall.EAST;
+            if (transform.position.y >= other.transform.position.y - 2.5f & transform.position.y <= other.transform.position.y + 2.5f)
+            {
+                player.canGoEast = false;
+                transform.position = new Vector3(other.transform.position.x + 0.3f, transform.position.y, transform.position.z);
+            }
+            else if (gravity.deplacement().y >= 0 & transform.position.y <= other.transform.position.y + 2.5f)
+            {
+                player.setIsOnAir(true);
+                gravity.Off();
+                gravity.On();
+            }
+            else if (transform.position.y >= other.transform.position.y +2.4f )
+            {
+                player.setIsOnAir(false);
+                gravity.Off();
+                transform.position = new Vector3(transform.position.x, other.transform.position.y + 2.75f, transform.position.z);
+            }
+
         }
         else if (other.CompareTag("West"))
         {
             Debug.Log("W");
             actualWall = typeOfWall.WEST;
+            if (transform.position.y >= other.transform.position.y - 2.5f  & transform.position.y <= other.transform.position.y + 2.5f)
+            {
+                player.canGoWest = false;
+                transform.position = new Vector3(other.transform.position.x - 0.3f, transform.position.y, transform.position.z);
+            }
+            else if ( gravity.deplacement().y >= 0 & transform.position.y <= other.transform.position.y + 2.5f) 
+            {
+                player.setIsOnAir(true);
+                gravity.Off();
+                gravity.On();
+            }
+            else if (transform.position.y >= other.transform.position.y + 2.4f)
+            {
+                player.setIsOnAir(false);
+                gravity.Off();
+                transform.position = new Vector3(transform.position.x, other.transform.position.y + 2.75f, transform.position.z);
+            }
         }
         else {
             actualWall = typeOfWall.NONE;
@@ -57,7 +92,7 @@ public class ColliderController : MonoBehaviour
 
                 player.setIsOnAir(false);
                 gravity.Off();
-
+                transform.position = new Vector3(transform.position.x, other.transform.position.y + 0.3f, transform.position.z);
             }
             else if (other.CompareTag("NonCrossable") & gravity.deplacement().y >= 0) //non crossable par en-dessous (de côté ou non)
             {
@@ -86,5 +121,19 @@ public class ColliderController : MonoBehaviour
             player.setIsOnAir(true);
         }
         player.setCanMoveLaterally(true);
+
+
+        if (other.CompareTag("West"))
+        {
+            player.canGoWest = true;
+            gravity.On();
+            player.setIsOnAir(true);
+        }
+        else if (other.CompareTag("East"))
+        {
+            player.canGoEast = true;
+            gravity.On();
+            player.setIsOnAir(true);
+        }
     }
 }
