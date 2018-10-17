@@ -126,14 +126,21 @@ public class ColliderController : MonoBehaviour
         if (other.CompareTag("West"))
         {
             player.canGoWest = true;
-            gravity.On();
-            player.setIsOnAir(true);
+            if (transform.position.x - other.transform.position.x <= 0.3f & transform.position.y - other.transform.position.y >= 2.5f )
+            {
+                gravity.On();
+                player.setIsOnAir(true);
+            }
         }
         else if (other.CompareTag("East"))
         {
             player.canGoEast = true;
-            gravity.On();
-            player.setIsOnAir(true);
+            
+            if (other.transform.position.x - transform.position.x <= 0.3f & transform.position.y - other.transform.position.y >=2.5f )
+            {
+                gravity.On();
+                player.setIsOnAir(true);
+            }
         }
     }
 }
