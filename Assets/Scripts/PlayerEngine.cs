@@ -19,6 +19,8 @@ public class PlayerEngine : MonoBehaviour {
 
     private typeOfWall lastWallTouched;
 
+    public bool inTransparent;
+
     private void Start()
     {
         maximumSpeed = variables.playerVariables.maximumSpeed;
@@ -28,6 +30,7 @@ public class PlayerEngine : MonoBehaviour {
         lastWallTouched = typeOfWall.NONE;
         canGoWest = true;
         canGoEast = true;
+        inTransparent = false;
     }
 
     private void updatePosition (Vector2 deplacement)
@@ -106,8 +109,8 @@ public class PlayerEngine : MonoBehaviour {
 
     public bool canJump()
     {
-        if (isOnAir & compteurSaut == variables.playerVariables.maximumSaut) return false;
-        return compteurSaut > 0;
+        if (isOnAir & compteurSaut == variables.playerVariables.maximumSaut ) return false;
+        return (compteurSaut > 0 & !inTransparent);
     }
 
     public void wallJump()

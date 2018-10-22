@@ -110,6 +110,11 @@ public class ColliderController : MonoBehaviour
                 player.setCanMoveLaterally(false);
             }
         }
+
+        if (other.CompareTag("trans"))
+        {
+            player.inTransparent = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -141,6 +146,10 @@ public class ColliderController : MonoBehaviour
                 gravity.On();
                 player.setIsOnAir(true);
             }
+        }
+       if (other.CompareTag("trans"))
+        {
+            player.inTransparent = false;
         }
     }
 }
