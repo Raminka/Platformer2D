@@ -20,49 +20,59 @@ public class ColliderController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Target"))
+        {
+            other.GetComponent<Renderer>().material.color = Color.green;
+        }
+
+        if (other.CompareTag("North") & gravity.deplacement().y >= 0) 
+        {
+            player.setIsOnAir(true);
+            gravity.Off();
+            gravity.On();
+        }
         if (other.CompareTag("East"))
         {
-            Debug.Log("E");
+            
             actualWall = typeOfWall.EAST;
-            if (transform.position.y >= other.transform.position.y - 2.5f & transform.position.y <= other.transform.position.y + 2.5f)
+            if (transform.position.y >= other.transform.position.y - other.transform.lossyScale.y / 2/*2.5f*/ & transform.position.y <= other.transform.position.y + other.transform.lossyScale.y/2)//2.5f)
             {
                 player.canGoEast = false;
                 transform.position = new Vector3(other.transform.position.x + 0.3f, transform.position.y, transform.position.z);
             }
-            else if (gravity.deplacement().y >= 0 & transform.position.y <= other.transform.position.y + 2.5f)
+            else if (gravity.deplacement().y >= 0 & transform.position.y <= other.transform.position.y + other.transform.lossyScale.y / 2)// 2.5f)
             {
                 player.setIsOnAir(true);
                 gravity.Off();
                 gravity.On();
             }
-            else if (transform.position.y >= other.transform.position.y +2.4f )
+            else if (transform.position.y >= other.transform.position.y + other.transform.lossyScale.y / 2-0.1)//2.4f )
             {
                 player.setIsOnAir(false);
                 gravity.Off();
-                transform.position = new Vector3(transform.position.x, other.transform.position.y + 2.75f, transform.position.z);
+                transform.position = new Vector3(transform.position.x, other.transform.position.y + other.transform.lossyScale.y / 2 + 0.25f/* 2.75f*/, transform.position.z);
             }
 
         }
         else if (other.CompareTag("West"))
         {
-            Debug.Log("W");
             actualWall = typeOfWall.WEST;
-            if (transform.position.y >= other.transform.position.y - 2.5f  & transform.position.y <= other.transform.position.y + 2.5f)
+            if (transform.position.y >= other.transform.position.y - other.transform.lossyScale.y / 2/*2.5f*/  & transform.position.y <= other.transform.position.y + other.transform.lossyScale.y / 2)//2.5f)
             {
                 player.canGoWest = false;
                 transform.position = new Vector3(other.transform.position.x - 0.3f, transform.position.y, transform.position.z);
             }
-            else if ( gravity.deplacement().y >= 0 & transform.position.y <= other.transform.position.y + 2.5f) 
+            else if ( gravity.deplacement().y >= 0 & transform.position.y <= other.transform.position.y + other.transform.lossyScale.y / 2)//2.5f) 
             {
                 player.setIsOnAir(true);
                 gravity.Off();
                 gravity.On();
             }
-            else if (transform.position.y >= other.transform.position.y + 2.4f)
+            else if (transform.position.y >= other.transform.position.y + other.transform.lossyScale.y / 2-0.1)//2.4f)
             {
                 player.setIsOnAir(false);
                 gravity.Off();
-                transform.position = new Vector3(transform.position.x, other.transform.position.y + 2.75f, transform.position.z);
+                transform.position = new Vector3(transform.position.x, other.transform.position.y + other.transform.lossyScale.y / 2 + 0.25f /*2.75f*/, transform.position.z);
             }
         }
         else {
@@ -131,7 +141,7 @@ public class ColliderController : MonoBehaviour
         if (other.CompareTag("West"))
         {
             player.canGoWest = true;
-            if (transform.position.x - other.transform.position.x <= 0.3f & transform.position.y - other.transform.position.y >= 2.5f )
+            if (transform.position.x - other.transform.position.x <= 0.3f & transform.position.y - other.transform.position.y >= other.transform.lossyScale.y / 2)//2.5f )
             {
                 gravity.On();
                 player.setIsOnAir(true);
@@ -141,7 +151,7 @@ public class ColliderController : MonoBehaviour
         {
             player.canGoEast = true;
             
-            if (other.transform.position.x - transform.position.x <= 0.3f & transform.position.y - other.transform.position.y >=2.5f )
+            if (other.transform.position.x - transform.position.x <= 0.3f & transform.position.y - other.transform.position.y >= other.transform.lossyScale.y / 2)//2.5f )
             {
                 gravity.On();
                 player.setIsOnAir(true);
@@ -151,5 +161,6 @@ public class ColliderController : MonoBehaviour
         {
             player.inTransparent = false;
         }
+       
     }
 }
